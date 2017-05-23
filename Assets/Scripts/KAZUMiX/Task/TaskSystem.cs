@@ -45,6 +45,9 @@ namespace KAZUMiX.Task
 		/// <param name="newTask">New task.</param>
 		public void AddTask (ITask newTask)
 		{
+			#if UNITY_EDITOR
+			Debug.Log ("add task: " + newTask);
+			#endif
 			newTask.prevTask = lastTask;
 			newTask.nextTask = firstTask;
 			lastTask.nextTask = newTask;
@@ -73,8 +76,26 @@ namespace KAZUMiX.Task
 					}
 					finishedTask.prevTask = null;
 					finishedTask.nextTask = null;
+
+					#if UNITY_EDITOR
+					Debug.Log ("number of remained tasks: " + Count ());
+					#endif
 				}
 			}
+		}
+
+		/// <summary>
+		/// タスクの数をチェーンをたどって返す
+		/// </summary>
+		public int Count ()
+		{
+			int count = 0;
+			ITask task = firstTask.nextTask;
+			while (task != firstTask) {
+				count++;
+				task = task.nextTask;
+			}
+			return count;
 		}
 	}
 }
