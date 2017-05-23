@@ -5,9 +5,9 @@ using UnityEngine;
 namespace KAZUMiX.Task
 {
 	/// <summary>
-	/// タスクシステム用抽象タスククラス。GameObject 用。
+	/// タスクシステム用抽象タスククラス。GameObject の場合は BaseTaskMonobehaviour を利用すること。
 	/// </summary>
-	public abstract class BaseTaskMonoBehaviour : MonoBehaviour, ITask
+	public abstract class BaseTask: ITask
 	{
 		public ITask prevTask { get; set; }
 

@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace KAZUMiX.Task
 {
+	/// <summary>
+	/// タスクシステム用タスクインターフェース
+	/// </summary>
 	public interface ITask
 	{
 		/// <summary>
