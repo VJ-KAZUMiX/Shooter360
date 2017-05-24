@@ -22,6 +22,11 @@ namespace KAZUMiX.Task
 		/// <summary>
 		/// 毎フレーム呼び出し
 		/// </summary>
-		bool Execute ();
+		bool ExecuteTask ();
+
+		/// <summary>
+		/// 終了処理
+		/// </summary>
+		void OnFinishTask ();
 	}
 }

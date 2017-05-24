@@ -62,7 +62,7 @@ namespace KAZUMiX.Task
 			ITask task = firstTask.nextTask;
 			while (task != firstTask) {
 				// タスク実行
-				if (task.Execute ()) {
+				if (task.ExecuteTask ()) {
 					// タスク継続
 					task = task.nextTask;
 				} else {
@@ -76,6 +76,7 @@ namespace KAZUMiX.Task
 					}
 					finishedTask.prevTask = null;
 					finishedTask.nextTask = null;
+					finishedTask.OnFinishTask ();
 
 					#if UNITY_EDITOR
 					Debug.Log ("number of remained tasks: " + Count ());

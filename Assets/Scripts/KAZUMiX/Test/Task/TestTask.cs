@@ -26,7 +26,7 @@ namespace KAZUMiX.Test
 			this.taskName = taskName;
 		}
 
-		public override bool Execute ()
+		public override bool ExecuteTask ()
 		{
 			currentTime += Time.deltaTime;
 			if (currentTime >= maxTime) {

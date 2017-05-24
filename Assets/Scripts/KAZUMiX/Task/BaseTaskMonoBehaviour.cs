@@ -13,9 +13,14 @@ namespace KAZUMiX.Task
 
 		public ITask nextTask { get; set; }
 
-		public virtual bool Execute ()
+		public virtual bool ExecuteTask ()
 		{
 			return true;
+		}
+
+		public virtual void OnFinishTask ()
+		{
+			Destroy (gameObject);
 		}
 	}
 }
