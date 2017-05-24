@@ -9,8 +9,18 @@ namespace KAZUMiX.Task
 	/// </summary>
 	public abstract class BaseTaskMonoBehaviour : MonoBehaviour, ITask
 	{
-		public ITask prevTask { get; set; }
+		/// <summary>
+		/// transform キャッシュ
+		/// </summary>
+		private Transform _cache_transform;
 
+		/// <summary>
+		/// キャッシュ済み transform
+		/// </summary>
+		/// <value>The transform.</value>
+		public new Transform transform { get { return _cache_transform ?? (_cache_transform = gameObject.transform); } }
+
+		public ITask prevTask { get; set; }
 		public ITask nextTask { get; set; }
 
 		public virtual bool ExecuteTask ()
