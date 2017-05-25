@@ -6,6 +6,12 @@ using KAZUMiX.Task;
 public class BattleScene : MonoBehaviour
 {
 	[SerializeField]
+	private Camera mainCamera;
+
+	[SerializeField]
+	private Camera uiCamera;
+
+	[SerializeField]
 	private BattleUiManager battleUiManager;
 
 	[SerializeField]
@@ -33,10 +39,12 @@ public class BattleScene : MonoBehaviour
 		taskSystem.AddTask (playerCtrl);
 
 		// カメラ設定
-		Transform cameraTrans = Camera.main.transform;
+		Transform cameraTrans = mainCamera.transform;
 		Vector3 cameraPos = cameraTrans.position;
 		cameraTrans.SetParent (playerCtrl.transform);
 		cameraPos.y = 1;
 		cameraTrans.position = cameraPos;
+
+		uiCamera.transform.position = cameraTrans.position;
 	}
 }
