@@ -45,6 +45,7 @@ public class BattleScene : MonoBehaviour
 		cameraPos.y = 1;
 		cameraTrans.position = cameraPos;
 
+		// UI は別カメラ。メインカメラはプレイヤーの子として動くため
 		uiCamera.transform.position = cameraTrans.position;
 	}
 }

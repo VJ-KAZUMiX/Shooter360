@@ -77,10 +77,6 @@ namespace KAZUMiX.Task
 					finishedTask.prevTask = null;
 					finishedTask.nextTask = null;
 					finishedTask.OnFinishTask ();
-
-					#if UNITY_EDITOR
-					Debug.Log ("number of remained tasks: " + Count ());
-					#endif
 				}
 			}
 		}

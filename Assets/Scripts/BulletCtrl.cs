@@ -6,9 +6,10 @@ using KAZUMiX.Task;
 
 public class BulletCtrl : BaseTaskMonoBehaviour
 {
-	public void Init ()
+	public void Init (Vector2 direction, Quaternion rotation)
 	{
-		direction = Vector2.up;
+		this.direction = direction;
+		transform.rotation = rotation;
 		speed = 5.0f;
 		range = 10.0f;
 		movingDistance = 0;

@@ -40,7 +40,7 @@ public class PlayerCtrl : BaseTaskMonoBehaviour
 	{
 		GameObject go = Instantiate (prefabPlayerBullet) as GameObject;
 		BulletCtrl bulletCtrl = go.GetComponent<BulletCtrl> ();
-		bulletCtrl.Init ();
+		bulletCtrl.Init (transform.up, transform.rotation);
 		bulletTaskSystem.AddTask (bulletCtrl);
 	}
 
@@ -53,15 +53,13 @@ public class PlayerCtrl : BaseTaskMonoBehaviour
 
 	private void OnEndDrag (Vector3 pos)
 	{
-		// TODO: これいる？
-		prevAngle = Mathf.Atan2 (pos.y - transform.position.y, pos.x - transform.position.x);
 	}
 
 	private void OnDrag (Vector3 pos)
 	{
 		float currentAngle = Mathf.Atan2 (pos.y - transform.position.y, pos.x - transform.position.x);
 		float deltaAngle = prevAngle - currentAngle;
-		Debug.Log (string.Format ("currentAngle: {0}, deltaAngle: {1}, prevAngle {2}", currentAngle, deltaAngle, prevAngle));
+		//Debug.Log (string.Format ("currentAngle: {0}, deltaAngle: {1}, prevAngle {2}", currentAngle, deltaAngle, prevAngle));
 		transform.Rotate (new Vector3 (0, 0, deltaAngle * 180 / Mathf.PI));
 		prevAngle = currentAngle;
 	}

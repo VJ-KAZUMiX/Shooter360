@@ -20,18 +20,36 @@ public class BattleUiManager : MonoBehaviour
 
 	public Vector3Delegate BgDragEvent;
 
-	public void OnFirePress ()
+	public void OnFirePress (BaseEventData baseEventData)
 	{
 		if (FirePressEvent != null) {
 			FirePressEvent ();
 		}
 	}
 
-	public void OnFireRelease ()
+	public void OnFireRelease (BaseEventData baseEventData)
 	{
 		if (FireReleaseEvent != null) {
 			FireReleaseEvent ();
 		}
+	}
+
+	public void OnFireBeginDrag (BaseEventData baseEventData)
+	{
+		PointerEventData pointerEventData = baseEventData as PointerEventData;
+		ExecuteEvents.ExecuteHierarchy (pointerEventData.currentInputModule.transform.parent.gameObject, pointerEventData, ExecuteEvents.beginDragHandler);
+	}
+
+	public void OnFireEndDrag (BaseEventData baseEventData)
+	{
+		PointerEventData pointerEventData = baseEventData as PointerEventData;
+		ExecuteEvents.ExecuteHierarchy (pointerEventData.currentInputModule.transform.parent.gameObject, pointerEventData, ExecuteEvents.endDragHandler);
+	}
+
+	public void OnFireDrag (BaseEventData baseEventData)
+	{
+		PointerEventData pointerEventData = baseEventData as PointerEventData;
+		ExecuteEvents.ExecuteHierarchy (pointerEventData.currentInputModule.transform.parent.gameObject, pointerEventData, ExecuteEvents.dragHandler);
 	}
 
 	public void OnBeginDrag (BaseEventData baseEventData)
