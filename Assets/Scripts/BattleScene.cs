@@ -19,6 +19,12 @@ public class BattleScene : MonoBehaviour
 
 	private TaskSystem taskSystem;
 
+	/// <summary>
+	/// プレイヤー参照用
+	/// </summary>
+	/// <value>The player ctrl.</value>
+	public PlayerCtrl playerCtrl { get; private set; }
+
 	// Use this for initialization
 	void Start ()
 	{
